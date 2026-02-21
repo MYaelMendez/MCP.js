@@ -1,0 +1,21 @@
+{
+  "name": "@mcp/viewport",
+  "version": "0.1.0",
+  "description": "MCP.js browser surface / viewport",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "dependencies": {
+    "@mcp/runtime": "*"
+  }
+}

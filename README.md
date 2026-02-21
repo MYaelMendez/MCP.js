@@ -1,6 +1,60 @@
-# [![xterm.js](images/logo-full.png)](https://xtermjs.org)
+# MCP.js — Sovereign MCP Runtime Platform
 
-Xterm.js is a frontend component that enables applications to bring fully-featured terminals to their users in the browser. It's used by popular projects such as [VS Code](https://code.visualstudio.com/) (and its forks), [Tabby](https://tabby.sh/) and [Hyper](https://hyper.is/).
+MCP.js is a **monorepo** that provides an isomorphic MCP (Multi-Chain Protocol) runtime,
+a command-line interface, a browser viewport, and an optional xterm.js terminal adapter.
+The runtime is the product; the terminal is just one optional surface.
+
+## Monorepo layout
+
+```
+packages/
+  runtime/           Isomorphic engine — Node + Browser
+  cli/               Node-only CLI  (mcp plan|exec|vote|seal|verify|export)
+  viewport/          Browser surface (depends on runtime)
+  terminal-adapter/  Optional xterm.js ↔ runtime bridge (depends on runtime)
+src/                 Legacy xterm.js terminal engine (kept for reference)
+addons/              Legacy xterm.js addons
+```
+
+## Package purposes
+
+| Package | Description |
+|---------|-------------|
+| `@mcp/runtime` | Core ledger engine, DID:key crypto (Ed25519 + base58btc), plugin system, DAO governance |
+| `@mcp/cli` | `mcp` CLI binary — thin shell over the runtime |
+| `@mcp/viewport` | Browser DOM surface that binds to runtime events/plans |
+| `@mcp/terminal-adapter` | Optional adapter wiring xterm.js to the runtime I/O stream |
+
+## Getting started
+
+```bash
+npm install          # installs all workspace packages
+npm run build        # compiles TypeScript for all packages
+```
+
+## CLI
+
+```bash
+mcp plan   <plugin> <json-input>        # produce a plan envelope
+mcp exec   <plugin> <json-plan>         # execute a plan
+mcp vote   <proposalId> <yes|no|abstain>  # cast a DAO vote
+mcp seal   <proposalId>                 # seal after quorum
+mcp verify                              # verify ledger chain integrity
+mcp export                              # export ledger as JSON
+```
+
+## Design principles
+
+- **Runtime is the product** — terminal rendering is an optional adapter.
+- **ESM only** — all packages use `"type": "module"`.
+- **Platform-agnostic** — `@mcp/runtime` targets both Node and Browser from day one.
+- **Ed25519 / DID:key** — cryptography via `@noble/ed25519` and `multiformats`; no WebCrypto or Node crypto fallbacks.
+- **npm workspaces** — `package-lock.json` and `npm install` are the source of truth.
+
+---
+
+> Legacy xterm.js documentation is preserved below for reference.
+
 
 ## Features
 

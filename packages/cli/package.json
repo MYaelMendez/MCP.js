@@ -1,0 +1,16 @@
+{
+  "name": "@mcp/cli",
+  "version": "0.1.0",
+  "description": "MCP.js command-line interface (Node only)",
+  "type": "module",
+  "bin": {
+    "mcp": "./dist/bin/mcp.js"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "dependencies": {
+    "@mcp/runtime": "*"
+  }
+}

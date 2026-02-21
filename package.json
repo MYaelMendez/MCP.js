@@ -1,14 +1,12 @@
 {
-  "name": "@xterm/xterm",
-  "description": "Full xterm terminal, in your browser",
-  "version": "6.0.0",
-  "main": "lib/xterm.js",
-  "module": "lib/xterm.mjs",
-  "style": "css/xterm.css",
-  "types": "typings/xterm.d.ts",
-  "repository": "https://github.com/xtermjs/xterm.js",
+  "name": "mcp.js",
+  "description": "MCP.js — sovereign MCP runtime platform",
+  "version": "0.1.0",
+  "private": true,
+  "repository": "https://github.com/MYaelMendez/MCP.js",
   "license": "MIT",
   "workspaces": [
+    "packages/*",
     "addons/*"
   ],
   "keywords": [
@@ -32,7 +30,8 @@
     "postsetup": "npm run esbuild-demo-server",
     "start": "node demo/start",
     "dev": "concurrently -k -p [{name}] -n tsc,esbuild,esbuild-demo-client,esbuild-demo-server,server -c blue,yellow,cyan,green,magenta \"npm:tsc-watch\" \"npm:esbuild-watch\" \"npm:esbuild-demo-client-watch\" \"npm:esbuild-demo-server-watch\" \"npm:start\"",
-    "build": "npm run tsc",
+    "build": "npm run build-packages && npm run tsc",
+    "build-packages": "tsc -b packages/runtime packages/cli packages/viewport packages/terminal-adapter",
     "watch": "npm run tsc-watch",
     "tsc": "tsgo -b ./tsconfig.all.json",
     "tsc-watch": "tsgo -b -w ./tsconfig.all.json --preserveWatchOutput",

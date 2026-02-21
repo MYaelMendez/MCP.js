@@ -2,6 +2,10 @@
   "files": [],
   "include": [],
   "references": [
+    { "path": "./packages/runtime" },
+    { "path": "./packages/cli" },
+    { "path": "./packages/viewport" },
+    { "path": "./packages/terminal-adapter" },
     { "path": "./demo" },
     { "path": "./src/browser" },
     { "path": "./src/headless" },

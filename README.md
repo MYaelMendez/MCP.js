@@ -2,6 +2,43 @@
 
 Xterm.js is a frontend component that enables applications to bring fully-featured terminals to their users in the browser. It's used by popular projects such as [VS Code](https://code.visualstudio.com/) (and its forks), [Tabby](https://tabby.sh/) and [Hyper](https://hyper.is/).
 
+## MCP Runtime Platform (Monorepo)
+
+This repository is structured as an npm workspace monorepo. **`@mcp/runtime` is the core product** — a sovereign, isomorphic MCP runtime platform that runs in both Node.js and browser environments with no DOM, fs, or CLI dependencies.
+
+### Monorepo layout
+
+```
+packages/
+  runtime/          @mcp/runtime   — Core MCP runtime (the product)
+  cli/              @mcp/cli       — Thin CLI wrapper over runtime
+  viewport/         @mcp/viewport  — Browser adapter (depends on runtime)
+  terminal-adapter/ @mcp/terminal-adapter — xterm.js bridge (depends on viewport)
+```
+
+### Getting started
+
+```bash
+# Install all workspace dependencies
+npm install
+
+# Build all packages
+npm run build:packages
+
+# Run tests
+npm run test:packages
+```
+
+### Dependency layering
+
+```
+runtime  ←  viewport  ←  terminal-adapter
+    ↑
+   cli
+```
+
+No cross-package `../../` imports — packages reference each other by name (e.g. `@mcp/runtime`).
+
 ## Features
 
 - **Terminal apps just work**: Xterm.js works with most terminal apps such as `bash`, `vim`, and `tmux`, including support for curses-based apps and mouse events.

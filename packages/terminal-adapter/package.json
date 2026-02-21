@@ -1,0 +1,24 @@
+{
+  "name": "@mcp/terminal-adapter",
+  "version": "0.1.0",
+  "description": "MCP bridge between viewport and xterm.js",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "echo \"No tests for terminal-adapter\" && exit 0"
+  },
+  "dependencies": {
+    "@mcp/viewport": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}

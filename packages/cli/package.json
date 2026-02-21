@@ -1,0 +1,19 @@
+{
+  "name": "@mcp/cli",
+  "version": "0.1.0",
+  "description": "MCP command-line interface",
+  "type": "module",
+  "bin": {
+    "mcp": "./dist/bin/mcp.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "echo \"No tests for cli\" && exit 0"
+  },
+  "dependencies": {
+    "@mcp/runtime": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}

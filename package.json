@@ -2,6 +2,7 @@
   "name": "@xterm/xterm",
   "description": "Full xterm terminal, in your browser",
   "version": "6.0.0",
+  "private": true,
   "main": "lib/xterm.js",
   "module": "lib/xterm.mjs",
   "style": "css/xterm.css",
@@ -9,7 +10,8 @@
   "repository": "https://github.com/xtermjs/xterm.js",
   "license": "MIT",
   "workspaces": [
-    "addons/*"
+    "addons/*",
+    "packages/*"
   ],
   "keywords": [
     "cli",
@@ -27,6 +29,8 @@
     "xterm"
   ],
   "scripts": {
+    "build:packages": "npm -w @mcp/runtime -w @mcp/viewport -w @mcp/terminal-adapter -w @mcp/cli run build",
+    "test:packages": "npm -w @mcp/runtime run test",
     "presetup": "npm run build",
     "setup": "npm run esbuild",
     "postsetup": "npm run esbuild-demo-server",

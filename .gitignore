@@ -29,3 +29,6 @@ demo/dist/
 # dont commit benchmark folders
 .benchmark/
 timeline/
+
+# TypeScript incremental build info files
+*.tsbuildinfo

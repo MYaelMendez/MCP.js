@@ -1,0 +1,29 @@
+{
+  "name": "@mcp/terminal-adapter",
+  "version": "0.1.0",
+  "description": "Optional xterm.js ↔ MCP runtime bridge adapter",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "dependencies": {
+    "@mcp/runtime": "*"
+  },
+  "peerDependencies": {
+    "@xterm/xterm": "*"
+  },
+  "peerDependenciesMeta": {
+    "@xterm/xterm": {
+      "optional": true
+    }
+  }
+}

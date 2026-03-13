@@ -18,3 +18,7 @@ export type { MCPPlugin, PlanEnvelope, ExecutionContext, ResultEnvelope } from "
 
 // Runtime engine
 export { PluginEngine } from "./runtime/engine.js"
+
+// DAGMO client
+export { DagmoClient, DEFAULT_WORKER_URL } from "./dagmo/client.js"
+export type { CreateBountyRequest, CreateBountyResponse } from "./dagmo/client.js"
